@@ -160,6 +160,15 @@ function showSuccessDialog(outputPath) {
 // Initialize
 showSection('project');
 
+// Listen for build logs and progress from main process
+ipcRenderer.on('log', (event, message) => {
+  log(message);
+});
+
+ipcRenderer.on('progress', (event, percent) => {
+  updateProgress(percent);
+});
+
 // Listen for logs from main
 ipcRenderer.on('log', (event, message) => {
   log(message);

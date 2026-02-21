@@ -146,8 +146,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
   sendLog('Installing dependencies...');
   sendProgress(40);
 
-  // Install dependencies
-  await execAsync('npm install', { cwd: appDir });
+  try {
+    // Install dependencies
+    await execAsync('npm install', { cwd: appDir });
+  } catch (error) {
+    throw new Error(`Failed to install dependencies: ${error.message}`);
+  }
 
   sendLog('Packaging application...');
   sendProgress(60);
@@ -155,7 +159,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // Package the app
   const packageFormats = config.packageFormats || ['win'];
   for (const format of packageFormats) {
-    await packageApp(appDir, outputDir, format, config);
+    try {
+      await packageApp(appDir, outputDir, format, config);
+    } catch (error) {
+      throw new Error(`Failed to package for ${format}: ${error.message}`);
+    }
   }
 
   sendLog('Saving configuration...');
