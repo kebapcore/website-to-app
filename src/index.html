@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website to App Builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Website to App Builder</h1>
+      <div class="header-actions">
+        <button id="save-config">Save Config</button>
+        <button id="load-config">Load Config</button>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <nav class="sidebar">
+        <ul>
+          <li class="active" data-section="project">Project Settings</li>
+          <li data-section="behavior">Behavior</li>
+          <li data-section="visuals">Visuals</li>
+          <li data-section="metadata">Metadata</li>
+          <li data-section="build">Build</li>
+        </ul>
+      </nav>
+
+      <main class="content">
+        <section id="project" class="section active">
+          <h2>Project Settings</h2>
+          <div class="form-group">
+            <label for="url">Website URL</label>
+            <input type="url" id="url" placeholder="https://example.com">
+          </div>
+          <div class="form-group">
+            <label for="name">App Name</label>
+            <input type="text" id="name" placeholder="My App">
+          </div>
+          <div class="form-group">
+            <label for="appId">App Identifier</label>
+            <input type="text" id="appId" placeholder="com.example.app">
+          </div>
+          <div class="form-group">
+            <label for="version">Version</label>
+            <input type="text" id="version" value="1.0.0">
+          </div>
+        </section>
+
+        <section id="behavior" class="section">
+          <h2>Behavior Configuration</h2>
+          <h3>Browser Behavior</h3>
+          <div class="checkbox-group">
+            <label><input type="checkbox" id="enableCookies" checked> Enable Cookies</label>
+            <label><input type="checkbox" id="enableLocalStorage" checked> Enable Local Storage</label>
+            <label><input type="checkbox" id="allowRightClick" checked> Allow Right Click</label>
+            <label><input type="checkbox" id="allowDevTools"> Allow DevTools</label>
+            <label><input type="checkbox" id="blockExternalLinks"> Block External Links</label>
+            <label><input type="checkbox" id="allowDownloads" checked> Allow Downloads</label>
+            <label><input type="checkbox" id="sandbox"> Sandbox Mode</label>
+          </div>
+          <div class="form-group">
+            <label for="customUserAgent">Custom User Agent</label>
+            <input type="text" id="customUserAgent">
+          </div>
+
+          <h3>Window Behavior</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="width">Width</label>
+              <input type="number" id="width" value="800">
+            </div>
+            <div class="form-group">
+              <label for="height">Height</label>
+              <input type="number" id="height" value="600">
+            </div>
+          </div>
+          <div class="checkbox-group">
+            <label><input type="checkbox" id="resizable" checked> Resizable</label>
+            <label><input type="checkbox" id="frame" checked> Framed Window</label>
+            <label><input type="checkbox" id="alwaysOnTop"> Always on Top</label>
+            <label><input type="checkbox" id="fullscreen"> Fullscreen Launch</label>
+            <label><input type="checkbox" id="transparent"> Transparent Window</label>
+          </div>
+        </section>
+
+        <section id="visuals" class="section">
+          <h2>Visual Customization</h2>
+          <div class="form-group">
+            <label for="iconPath">App Icon</label>
+            <input type="file" id="iconPath" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label for="windowTitle">Window Title</label>
+            <input type="text" id="windowTitle">
+          </div>
+          <div class="form-group">
+            <label for="themeColor">Theme Color</label>
+            <input type="color" id="themeColor" value="#ffffff">
+          </div>
+          <div class="form-group">
+            <label for="customPreload">Custom Preload Script</label>
+            <textarea id="customPreload" placeholder="JavaScript code to run in preload context"></textarea>
+          </div>
+        </section>
+
+        <section id="metadata" class="section">
+          <h2>Metadata Editor</h2>
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company">
+          </div>
+          <div class="form-group">
+            <label for="copyright">Copyright</label>
+            <input type="text" id="copyright">
+          </div>
+          <div class="form-group">
+            <label for="license">License</label>
+            <textarea id="license"></textarea>
+          </div>
+        </section>
+
+        <section id="build" class="section">
+          <h2>Build Target Selection</h2>
+          <div class="checkbox-group">
+            <label><input type="checkbox" id="win" checked> Windows EXE Installer</label>
+            <label><input type="checkbox" id="deb"> Linux DEB Package</label>
+            <label><input type="checkbox" id="appimage"> Linux AppImage</label>
+          </div>
+          <button id="build-btn" class="build-btn">BUILD APPLICATION</button>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="logs">
+        <h3>Build Logs</h3>
+        <div id="log-output" class="log-output"></div>
+      </div>
+      <div class="progress">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
