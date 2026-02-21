@@ -8,7 +8,7 @@
     "build": "electron-builder",
     "dist": "electron-builder --publish=never"
   },
-  "author": "Your Name",
+  "author": "Website to App Builder <builder@example.com>",
   "license": "MIT",
   "devDependencies": {
     "electron": "^25.0.0",
@@ -28,7 +28,7 @@
       "target": "nsis"
     },
     "linux": {
-      "target": ["AppImage", "deb"]
+      "target": "AppImage"
     }
   }
 }
